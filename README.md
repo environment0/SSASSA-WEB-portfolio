@@ -139,7 +139,7 @@
 * Git
 * GitHub
 
-## 🗄 Database
+##  Database
 
 프로젝트의 주요 데이터는 다음과 같이 구성했습니다.
 
@@ -157,7 +157,7 @@
 
 
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 ### 1. 상품 정렬 기능 구현
 
