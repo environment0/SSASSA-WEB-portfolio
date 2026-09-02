@@ -43,7 +43,7 @@ public class PayController {
         String[] selectedProductIds = request.getParameterValues("selectedProducts");
         if (selectedProductIds == null || selectedProductIds.length == 0) {
             model.addAttribute("error", "선택된 상품이 없습니다.");
-            return "redirect://pd/list";
+            return "redirect:/pd/list";
         }
 
         List<SelectedProductDTO> selectedItems = new ArrayList<>();
@@ -96,10 +96,12 @@ public class PayController {
             return "redirect:/login";
         }
 
+        System.out.println();
         ProductMaster productMaster = productService.getProductById(productId);
         if (productMaster == null) {
+            System.out.println("상품을 찾을 수 없습니다.");
             model.addAttribute("error", "상품을 찾을 수 없습니다.");
-            return "redirect:/pd/list";
+            return "redirect:/pd/list?cid=1";
         }
 
         if (quantity <= 0)

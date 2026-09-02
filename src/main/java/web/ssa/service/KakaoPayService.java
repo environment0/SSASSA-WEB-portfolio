@@ -1,6 +1,8 @@
 package web.ssa.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
+
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
@@ -22,6 +24,7 @@ public class KakaoPayService {
 
     private final PaymentRepository paymentRepository;
     private static final String ADMIN_KEY = "KakaoAK 3abec9eb781aaddcb9e4d14a1b3f25d5";
+    private static final String BASE_URL = "https://ssa.hyproz.myds.me";
 
     private String tid;
     private String partnerOrderId;
@@ -52,9 +55,9 @@ public class KakaoPayService {
         params.add("quantity", String.valueOf(quantity));
         params.add("total_amount", String.valueOf(product.getPrice() * quantity));
         params.add("tax_free_amount", "0");
-        params.add("approval_url", "http://localhost:8080/pay/success");
-        params.add("cancel_url", "http://localhost:8080/pay/fail");
-        params.add("fail_url", "http://localhost:8080/pay/fail");
+        params.add("approval_url", BASE_URL+"/pay/success");
+        params.add("cancel_url", BASE_URL+"/pay/fail");
+        params.add("fail_url", BASE_URL+"/pay/fail");
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
         ResponseEntity<Map> response = restTemplate.postForEntity(
@@ -92,9 +95,9 @@ public class KakaoPayService {
         params.add("quantity", String.valueOf(totalQuantity));
         params.add("total_amount", String.valueOf(totalAmount));
         params.add("tax_free_amount", "0");
-        params.add("approval_url", "http://localhost:8080/pay/success");
-        params.add("cancel_url", "http://localhost:8080/pay/fail");
-        params.add("fail_url", "http://localhost:8080/pay/fail");
+        params.add("approval_url", BASE_URL+"/pay/success");
+        params.add("cancel_url", BASE_URL+"/pay/fail");
+        params.add("fail_url", BASE_URL+"/pay/fail");
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
         ResponseEntity<Map> response = restTemplate.postForEntity(

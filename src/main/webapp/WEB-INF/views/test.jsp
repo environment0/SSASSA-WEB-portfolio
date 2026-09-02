@@ -18,5 +18,20 @@
   </c:otherwise>
 </c:choose>
 
+
+<h1>Limbest XSS Sample</h1>
+<%
+  String name = request.getParameter("name");
+  if (name != null) {
+    name = name.replaceAll("<", "&lt");
+    name = name.replaceAll(">", "&gt");
+    name = name.replaceAll("&", "&amp");
+    name = name.replaceAll("'", "&quot");
+  }else{
+    name="";
+  }
+%>
+<p>NAME: <%=name%></p>
+
 </body>
 </html>
