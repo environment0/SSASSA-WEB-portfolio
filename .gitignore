@@ -37,3 +37,7 @@ src/main/resources/application.properties
 
 ### VS Code ###
 .vscode/
+
+.DS_Store
+hs_err_pid*.log
+replay_pid*.log
